@@ -35,8 +35,8 @@
     var decode = function(string, key){
         try {
             string = atob(string.replace(/\$/ig,'/').replace(/@/ig,'+').replace(/-/ig,'='));
-            len = key.length;
-            code = '';
+            var len = key.length;
+            var code = '';
             for (i = 0; i < string.length; i++) {
                 k = i % len;
                 code += String.fromCharCode(string.charCodeAt(i) ^ key.charCodeAt(k));
@@ -56,10 +56,10 @@
     var t = getQueryVariable("t");
     var u = getQueryVariable("u");
     if (t) {
-        document.title = decode(t, k)
+        document.title = decode(t, k);
     }
     if (u) {
-        document.getElementById("iframe").src = decode(u, k)
+        document.getElementById("iframe").src = decode(u, k);
     }
 </script>
 
