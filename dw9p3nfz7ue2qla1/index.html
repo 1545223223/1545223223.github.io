@@ -32,16 +32,16 @@
     }
 
     // 解密字符串
-    var decode = function(string, key){
-        try {
+    var decode = function(string, key) {
+        try{
             string = atob(string.replace(/\$/ig,'/').replace(/@/ig,'+').replace(/-/ig,'='));
             var len = key.length;
             var code = '';
-            for (i = 0; i < string.length; i++) {
+            for (var i = 0, k; i < string.length; i++) {
                 k = i % len;
                 code += String.fromCharCode(string.charCodeAt(i) ^ key.charCodeAt(k));
             }
-            code = atob(code);
+            code =  atob(code);
             if (code && code.indexOf('%') !== -1) {
                 code = decodeURIComponent(code);
             }
